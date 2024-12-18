@@ -1,0 +1,175 @@
+# C# Questions
+These questions are here to help you engage with the material. We will use these questions to review and to prepare for QC
+### .NET Platform
+- What is C#?
+    - Strongly-typed OOP language created by Microsoft used for a variety of devices included mobile, PC, and servers
+- What is .NET Platform?
+    - Free, open-source C# development environment for building apps that can run on any platform
+    - Includes tools, libraries, and frameworks for building applications
+- What is Intermediary Language (IL)?
+    - Low level programming lagnauage that acts as a bridge betweeen high-level source code and machine code
+    - Also known as bytecode
+- What does .csproj file do?
+    - Contains all the information needed to build a C# project in Visual Studio
+    - Includes list of files, references to external libraries, build settings, etc
+    - Equivalent to pom.xml or package.json
+- When do we use project reference?
+    - Used to directly access code or resources from another project within the same solution
+    - Used to manage dependencies between projects duiring development
+- What is a solution in .NET?
+    - Solutions are the containers for all work in VS.NET
+    - Contains a project for each build output
+    - Acts as a grouping mechanism to manage multiple projects
+
+### C# Basics
+- Which method do I use to write something to the console?
+    - Console.WriteLine();
+- How about taking user input from the console?
+    - Console.ReadLine();
+- How do I take a string input and convert to integer and vice versa?
+    - Int32.Parse(string); inside a try catch
+- Why do we create methods? What are the benefits of compartmentalizing your code?
+    - For better code organization and reusability
+- What is an array? How do you initialize one?
+    - Data structure that allows you to store a elements of the same type under a single variable
+    - int[] arr = [];
+- What is variable declaration?
+    - Specifying the name and data type of the variable
+- What is variable initialization?
+    - Assigning an initial value to a variable when declaring
+- What is the main method? Why is it important?
+    - Entry point for the program, it's where the program starts
+- Why do we not see the main method after .NET 6?
+    - Introduction of top-level statements
+        - Executable code written directly at the file level
+- Debugger: What are breakpoints? What happens when the program hits the breakpoint?
+    - Program is stopped at the breakpoint
+    - Developers can inspect the current state of the program, incl variables and memory at the breakpoint
+- Debugger: What is step over, step into, step out?
+    - Step over: Execute the method as a single step, not interested in debugging
+    - Step into: Execute the method step by step to debug
+    - Step out: Done debugging method step by step, run the entire method until it returns as one step
+- What are exceptions? Why do we use them?
+    - Exceptions are used to handle unexpected errors during program execution
+    - Used to deal with scenarios that should stop the program from executing if not handled by the developer
+- Describe Try/Catch/Finally
+    - Try contains the code that may throw an error
+    - Catch contains the code that handles the case when an error is thrown
+    - Finally always executes after try/catch
+
+### C# Intermediate
+- What is class in C#?
+    - Template code used to define the structure, attributes, and behaviors of objects
+    - User defined data type that combines fields and methods into a single unit
+- What are the difference between Value types and Reference types?
+    - Values directly contain the data, while references store a pointer to an object
+    - Reference lives in the heap
+    - Value type lives inline
+- What are some collections available in C#? (Beyond List)
+    - ArrayList, Queue, Stack, LinkedList, Hashtable, Dictionary
+- How do we achieve Abstraction in C#?
+    - Use interfaces to define the properties and behaviors of classes
+- How do we achieve Encapsulation?
+    - Use access modifiers such as private and public to determine data access
+- How about Inheritance?
+    - Denoted by `:` to show a class extends another or implements an interface
+- Polymorphism in C#?
+    - Method overloading and overriding
+- What is overloading?
+    - Multiple methods with the same name but different signatures in the same class
+- What is overriding?
+    - Method in a child class with the same name and signature but different code
+- What's the difference between overloading and overriding
+    - Overloading takes place in the same class with different method signatures
+    - Overriding takes place in different classes with the same method signatures
+- What are properties?
+    - Member of a class that provides a flexible mechanism to read, write, or compute the value of a data field
+    - Named in proper case
+- What are fields?
+    - Variable of a given type that is declared in a class or struct
+- What are methods?
+    - Block of code that only runs when it is called
+    - Accepts parameters
+- What is constructor?
+    - Method used to initialize an object that is called when a class or struct is created
+    - Used to set defaults and limit instantiation
+- Describe 4 commonly used access modifiers in C#
+    - public: accessible by code in any assembly (.dll or .exe created by compiling)
+    - private: only accessible by code in the same class/struct
+    - protected: only accessible by same class or derived class
+    - internal: only accessible by code in the same assembly
+    - file: only accessible by code in the same file
+- what does static modifier do?
+    - Member belongs to the class itself rather than to an instance
+    - Called through the class instead of being invoked through an instance
+- (T/F) It is perfectly fine to always use the implicit typing instead of strongly typing my variables
+    - False
+- What is regular expressions? Give me some use cases for regex's.
+    - Defines a pattern for matching strings
+    - Useful for validation, such as email, phone number, url
+- Bonus: What could be a RegEx for validating the email address?
+    - \w+\@\w+\.\w+
+- What is unmanaged resource and how do you manage it?
+    - Resources that the garbage collector doesnt know about
+    - Ex: Open files/connections
+- What is serialization?
+    - Process of converting the state of an object into a form that can be persisted or transported
+- What are generic classes? 
+    - Classes that encapsulate operations not specific to a particular data type
+    - Most common use case is collections like linked lists, hash tables, etc
+    - Includes types that take type parameters
+- What is boxing and unboxing?
+    - Boxing: process of converting a value type to the type object
+        - `int i = 123;     object o = i;`
+    - Unboxing: reverse of boxing
+        - `o = 123;     i = (int)o;`
+- What's a struct, and how is it different from class?
+    - Value type that can encapsulate data and related functionality
+    - Struct is value type, ex: defining a vector with points
+    - Class is reference type
+- What is lambda expression?
+    - Used to create an anonymous function
+    - Denoted by `=>`
+
+### Testing
+- What do you use to unit test in C#?
+    - A testing framework, XUnit for this cohort
+- Describe AAA of unit testing
+    - Arrange, Act, Assert or Given, Then, When
+        - Arrange = Establish testing conditions such as initializing variables
+        - Act = Execute the method being tested
+        - Assert that the actual results match the expected
+- What do you unit test?
+    - Unit test methods in your code that can be tested independently
+- What do you NOT unit test?
+    - Do not test imported/built-in code
+
+### Design Principles
+- Describe SOLID
+    - Single Responsibility: A class should only have one well-defined responsibility
+    - Open/Closed: Software entities should be open for extension but closed for modification
+    - Liskov Substition: Objects of a superclass should be replaceable by objects of its subclasses without the application breaking
+    - Interface Segregation: Clients should not be forced to depend on interfaces they do not use
+    - Dependency Inversion: High-level modules should not depend on low-level modules; both should depend on abstractions, abstractions should not depend on details
+- What is Singleton pattern, and when do we use it?
+    - Class only has one instances and provides a single point of access to it
+    - Useful for logging, drivers, and caching
+- what is factory method pattern, and when do we use it?
+    - Defined a method for creating an object, but lets subclasses decide which class to instantiate
+    - Promotes loose coupling
+    - Used when a class can't anticipate the type of object it needs to create
+    - Useful for providing users of a library or framework a way to extend internal components
+- What is dependency injection, and why do we use it?
+    - Used to achieve Inversion of Control
+    - Removes responsibility of creating and managing dependencies from a class
+    - Constructor injection, property injection, and method injection
+    - Makes code more modular, testable, and maintainable
+- How does dependency injection differ from dependency inversion?
+    - Dependency inversion is a principle about structuring dependencies
+        - Creating abstractions and reducting direct dependencies
+    - Dependency injection is a pattern for implementing that pattern
+        - How those dependencies are provided to the class
+- What is separation of concerns principle?
+    - Advocates for diving a program into distinct sections
+        - Each section addresses a separate concern, where a concern is a set of info that affects the code
+    - Ex: MVC design pattern

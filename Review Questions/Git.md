@@ -1,0 +1,45 @@
+# Git Questions
+These questions are here to help you engage with the material. We will use these questions to review and to prepare for QC
+
+- What is VCS?
+    - Version Control System is used to track and manage changes to a codebase and its files
+- What is git?
+    - Open-source VCS used for collaborating on 
+- When do we use git/Why is git important?
+    - Use git for managing versions of a codebase to be able to track changes
+- How is git different from GitHub?
+    - Git is a VCS, GitHub is an online platform that uses git and hosts remote repositories
+- What is a repository?
+    - Database that stores a project's history and revisions, along with a copy the whole project
+- How do we tell when a folder is git repository or not?
+    - .git file inside the folder
+- What's the difference between remote and local repository?
+    - Local repository is on the working device and is where changes are made
+    - Remote is where the repository is hosted and is used for collaborataion
+- What is cloning?
+    - Copies a remote repository to local device
+- What is staging?
+    - Marking specific changes made in a repository to be included in the next commit
+- What is committing?
+    - Creates a snapshot of a project's state at a specific point in time
+- how do I look at my commit history?
+    - git log
+- What is pulling?
+    - Fetching commits from the remote repository to local
+- What is pushing?
+    - Sending commits from local to remote
+- Describe the basic git workflow 
+    - git pull/clone => Make changes => git add => git commit => git push
+- What are branches, and why are they important?
+    - Separate copy of the main repository to work on different parts of a project without affecting the main branch
+    - Important for developing separate features
+- What is merging?
+    - Combine changes from different branches into a single branch
+- What is a Pull Request?
+    - Method for proposing changes to a codebase by merging branches together
+- What are some recommended practices when working with others?
+    - Always pull before beginning work
+    - Avoid merge conflicts
+    - Comment code for clarity
+- (T/F) It is recommended to push directly to main especially when working in a team project
+    - False

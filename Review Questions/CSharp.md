@@ -130,6 +130,8 @@ These questions are here to help you engage with the material. We will use these
 - What is lambda expression?
     - Used to create an anonymous function
     - Denoted by `=>`
+- LINQ: Language Integrated Queries
+    - Allows interacting with C# using SQL queries
 
 ### Testing
 - What do you use to unit test in C#?

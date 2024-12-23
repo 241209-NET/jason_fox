@@ -1,16 +1,25 @@
 # Routine Tracker
 
-https://dbdiagram.io/d/Routines-Tracker-6768782efc29fb2b3b1bbb89
+by Jason Fox
 
-App that lets you track the last time you did something
+## Project Requirements
 
- "can have" = optional
 
-Core features: 
-- user can create/manage items
-  - items have a name, description, and last_maintenance_date
-  - items can have a next_maintenance_date
-    - items can also have a maintenance_frequency that will auto-set next_maintenance_date for every x time period
-- user can create/manage categories
-  - items are uncategorized by default
-  - items can have multiple categories
+## Tech Stack
+- C# 
+- ASP.NET Core
+- SQL Server (locally hosted)
+- XUnit for testing
+
+## Tables
+[![ERD](./Assets/ERD.png)](https://dbdiagram.io/d/Routines-Tracker-6768782efc29fb2b3b1bbb89
+)
+
+## MVP Goals
+- Users can be created
+- Users can create and manage routine items
+- Users can set a name and description for routine items
+- Users can set a last and next observed date for items
+- Users can create and manage categories (items are uncategorized by default)
+- Users can assign and unassign items to categories
+

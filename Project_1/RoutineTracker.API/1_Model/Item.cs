@@ -7,7 +7,8 @@ public class Item
     public string? Description { get; set; }
     public DateOnly? LastDate { get; set; }
     public DateOnly? NextDate { get; set; }
-    public string? Frequency { get; set; }
+    // Frequency in number of days
+    public int? Frequency { get; set; }
 
     public int? CategoryId { get; set; }
 }

@@ -23,3 +23,8 @@ by Jason Fox
 - Users can create and manage categories (items are uncategorized by default)
 - Users can assign and unassign items to a category
 
+## Stretch Goals
+- Users can create groups which allow shared access to items and categories
+- NextDate for items will automatically update based on frequency
+- Items can have inceased precision based on time of day instead of just date
+- Frequency can have increased precision and support for multiple formats (ex. 1d, 12h, 4w)

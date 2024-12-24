@@ -21,5 +21,5 @@ by Jason Fox
 - Users can set a name and description for routine items
 - Users can set a last and next observed date for items
 - Users can create and manage categories (items are uncategorized by default)
-- Users can assign and unassign items to categories
+- Users can assign and unassign items to a category
 

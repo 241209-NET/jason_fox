@@ -6,6 +6,7 @@ namespace RoutineTracker.API.Repository;
 public class ItemRepository : IItemRepository
 {
     private readonly RoutineTrackerContext _routineTrackerContext;
+    
     public ItemRepository(RoutineTrackerContext routineTrackerContext)
     {
         _routineTrackerContext = routineTrackerContext;

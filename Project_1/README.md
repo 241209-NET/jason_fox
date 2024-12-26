@@ -37,6 +37,7 @@ C# ASP.NET API where users can create, manage, and categorize routine items to h
 - Users can assign and unassign items to a category
 
 ## Stretch Goals
+- User passwords are hashed for security and integrity
 - Users can create groups which allow shared access to items and categories
 - NextDate for items will automatically update based on frequency
 - Items can have inceased precision based on time of day instead of just date

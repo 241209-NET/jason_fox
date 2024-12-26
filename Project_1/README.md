@@ -2,7 +2,20 @@
 
 by Jason Fox
 
+## Description
+
+C# ASP.NET API where users can create, manage, and categorize routine items to help organize their daily life.
+
 ## Project Requirements
+- README that describes the application and its functionalities
+- ERD of your DB
+- The application should be ASP.NET Core application
+- The application should build and run
+- The application should have unit tests and at least 20% coverage (at least 5 unit tests that tests 5 different methods/functionality of your code)
+- The application should communicate via HTTP(s) (Must have POST, GET, DELETE)
+- The application should be RESTful API
+- The application should persist data to a SQL Server DB
+- The application should communicate to DB via EF Core (Entity Framework Core)
 
 
 ## Tech Stack

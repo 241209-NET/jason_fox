@@ -14,17 +14,17 @@ builder.Services.AddDbContext<RoutineTrackerContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Dependency Inject the proper services
+// Dependency inject the proper services
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-//Dependency Inject the proper repositories
+// Dependency inject the proper repositories
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-//Add our controllers
+// Add controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

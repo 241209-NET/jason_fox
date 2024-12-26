@@ -9,4 +9,8 @@ public interface IItemService
     Item? GetItemById(int id);
     Item? UpdateItemById(int id, ItemInDTO updatedItem);
     Item? DeleteItemById(int id);
+    IEnumerable<Item> GetItemsByCategoryId(int categoryId);
+    IEnumerable<Item> GetItemsByUserId(int userId);
+    Item? AddItemToCategory(int itemId, int categoryId);
+    Item? RemoveItemFromCategory(int itemId, int categoryId);
 }

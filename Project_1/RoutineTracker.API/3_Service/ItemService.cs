@@ -33,4 +33,24 @@ public class ItemService : IItemService
     {
         return _itemRepository.DeleteItemById(id);
     }
+
+    public IEnumerable<Item> GetItemsByCategoryId(int categoryId)
+    {
+        return _itemRepository.GetItemsByCategoryId(categoryId);
+    }
+
+    public IEnumerable<Item> GetItemsByUserId(int userId)
+    {
+        return _itemRepository.GetItemsByUserId(userId);
+    }
+
+    public Item? AddItemToCategory(int itemId, int categoryId)
+    {
+        return _itemRepository.AddItemToCategory(itemId, categoryId);
+    }
+
+    public Item? RemoveItemFromCategory(int itemId, int categoryId)
+    {
+        return _itemRepository.RemoveItemFromCategory(itemId, categoryId);
+    }
 }

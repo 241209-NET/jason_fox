@@ -37,17 +37,6 @@ public class CategoryRepository : ICategoryRepository
         return category;
     }
 
-    public Category? AddItemToCategory(int categoryId, int itemId)
-    {
-        var category = _routineTrackerContext.Categories.Find(categoryId);
-        if (category == null) return null;
-        var item = _routineTrackerContext.Items.Find(itemId);
-        if (item == null) return null;
-        category.Items!.Add(item);
-        _routineTrackerContext.SaveChanges();
-        return category;
-    }
-
     public Category? DeleteCategoryById(int id)
     {
         var category = _routineTrackerContext.Categories.Find(id);

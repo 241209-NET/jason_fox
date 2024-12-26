@@ -4,6 +4,8 @@ using RoutineTracker.API.Service;
 
 namespace RoutineTracker.API.Controller;
 
+[Route("api/[controller]")]
+[ApiController]
 public class ItemController : ControllerBase
 {
     private readonly IItemService _itemService;
@@ -46,6 +48,42 @@ public class ItemController : ControllerBase
     public IActionResult DeleteItemById(int id)
     {
         var item = _itemService.DeleteItemById(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return Ok(item);
+    }
+
+    [HttpGet("category/{categoryId}")]
+    public IActionResult GetItemsByCategoryId(int categoryId)
+    {
+        var items = _itemService.GetItemsByCategoryId(categoryId);
+        return Ok(items);
+    }
+
+    [HttpGet("user/{userId}")]
+    public IActionResult GetItemsByUserId(int userId)
+    {
+        var items = _itemService.GetItemsByUserId(userId);
+        return Ok(items);
+    }
+
+    [HttpPost("{itemId}/category/{categoryId}")]
+    public IActionResult AddItemToCategory(int itemId, int categoryId)
+    {
+        var item = _itemService.AddItemToCategory(itemId, categoryId);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return Ok(item);
+    }
+
+    [HttpDelete("{itemId}/category/{categoryId}")]
+    public IActionResult RemoveItemFromCategory(int itemId, int categoryId)
+    {
+        var item = _itemService.RemoveItemFromCategory(itemId, categoryId);
         if (item == null)
         {
             return NotFound();

@@ -30,11 +30,6 @@ public class CategoryService : ICategoryService
         return _categoryRepository.UpdateCategoryById(id, category);
     }
 
-    public Category? AddItemToCategory(int categoryId, int itemId)
-    {
-        return _categoryRepository.AddItemToCategory(categoryId, itemId);
-    }
-
     public Category? DeleteCategoryById(int id)
     {
         return _categoryRepository.DeleteCategoryById(id);

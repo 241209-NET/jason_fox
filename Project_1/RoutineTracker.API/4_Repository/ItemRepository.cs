@@ -51,5 +51,31 @@ public class ItemRepository : IItemRepository
         return item;
     }
 
+    public IEnumerable<Item> GetItemsByCategoryId(int categoryId)
+    {
+        return _routineTrackerContext.Items.Where(item => item.CategoryId == categoryId);
+    }
 
+    public IEnumerable<Item> GetItemsByUserId(int userId)
+    {
+        return _routineTrackerContext.Items.Where(item => item.UserId == userId);
+    }
+
+    public Item? AddItemToCategory(int itemId, int categoryId)
+    {
+        var item = _routineTrackerContext.Items.Find(itemId);
+        if (item == null) return null;
+        item.CategoryId = categoryId;
+        _routineTrackerContext.SaveChanges();
+        return item;
+    }
+
+    public Item? RemoveItemFromCategory(int itemId, int categoryId)
+    {
+        var item = _routineTrackerContext.Items.Find(itemId);
+        if (item == null) return null;
+        item.CategoryId = null;
+        _routineTrackerContext.SaveChanges();
+        return item;
+    }
 }

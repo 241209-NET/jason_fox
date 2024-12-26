@@ -44,17 +44,6 @@ public class CategoryController : ControllerBase
         return Ok(category);
     }
 
-    [HttpPost("{categoryId}/items/{itemId}")]
-    public IActionResult AddItemToCategory(int categoryId, int itemId)
-    {
-        var category = _categoryService.AddItemToCategory(categoryId, itemId);
-        if (category == null)
-        {
-            return NotFound();
-        }
-        return Ok(category);
-    }
-
     [HttpDelete("{id}")]
     public IActionResult DeleteCategoryById(int id)
     {

@@ -8,4 +8,5 @@ public interface IUserService
     User CreateUser(UserInDTO newUser);
     User? AuthenticateUser(UserInDTO user);
     User? DeleteUserById(int id);
+    IEnumerable<User> DeleteAllUsers();
 }

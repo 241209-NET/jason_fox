@@ -32,4 +32,9 @@ public class UserService : IUserService
     {
         return _userRepository.DeleteUserById(id);
     }
+
+    public IEnumerable<User> DeleteAllUsers()
+    {
+        return _userRepository.DeleteAllUsers();
+    }
 }

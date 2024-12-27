@@ -7,4 +7,5 @@ public interface IUserRepository
     User CreateUser(User newUser);
     User? GetUserByCredentials(User user);
     User? DeleteUserById(int id);
+    IEnumerable<User> DeleteAllUsers();
 }

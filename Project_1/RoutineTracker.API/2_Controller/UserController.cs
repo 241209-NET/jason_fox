@@ -16,19 +16,19 @@ public class UserController : ControllerBase
     }
     
     [HttpPost]
-    public IActionResult CreateUser([FromBody] UserInDTO newUser)
+    public IActionResult CreateUser(UserInDTO newUser)
     {
         var user = _userService.CreateUser(newUser);
-        return CreatedAtAction("User Created", user);
+        return Ok(user);
     }
 
     [HttpPost("authenticate")]
-    public IActionResult AuthenticateUser([FromBody] UserInDTO user)
+    public IActionResult AuthenticateUser(UserInDTO user)
     {
         var authenticatedUser = _userService.AuthenticateUser(user);
         if (authenticatedUser == null)
         {
-            return BadRequest();
+            return Unauthorized();
         }
         return Ok(authenticatedUser);
     }
@@ -43,4 +43,11 @@ public class UserController : ControllerBase
         }
         return Ok(user);
     }
+
+    [HttpDelete]
+    public IActionResult DeleteAllUsers()
+    {
+        var users = _userService.DeleteAllUsers();
+        return Ok(users);
+    }    
 }

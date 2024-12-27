@@ -20,7 +20,7 @@ public class UserRepository : IUserRepository
 
     public User? GetUserByCredentials(User user)
     {
-        return _routineTrackerContext.Users.Find(user.Username, user.Password);
+        return _routineTrackerContext.Users.Select(u => u).Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
     }
 
     public User? DeleteUserById(int id)
@@ -30,5 +30,13 @@ public class UserRepository : IUserRepository
         _routineTrackerContext.Users.Remove(user);
         _routineTrackerContext.SaveChanges();
         return user;
+    }
+
+    public IEnumerable<User> DeleteAllUsers()
+    {
+        var users = _routineTrackerContext.Users.Select(u => u);
+        _routineTrackerContext.Users.RemoveRange(users);
+        _routineTrackerContext.SaveChanges();
+        return users;
     }
 }

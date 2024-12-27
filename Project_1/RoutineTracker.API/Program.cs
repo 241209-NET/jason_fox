@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using RoutineTracker.API.Data;
+using RoutineTracker.API.Model;
 using RoutineTracker.API.Repository;
 using RoutineTracker.API.Service;
 
@@ -24,6 +24,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Add automapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add controllers
 builder.Services.AddControllers()

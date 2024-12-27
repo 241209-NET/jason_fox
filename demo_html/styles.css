@@ -1,0 +1,35 @@
+body {
+  background-color: #2e2e2e;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  align-content: center;
+  text-align: center;
+  height: 70%;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+table {
+  text-align: left;
+  margin: 0 auto;
+}
+
+tr {
+  background-color: #4f4f4f;
+}
+
+td, th {
+  padding: 0.2rem 0.5rem;
+}

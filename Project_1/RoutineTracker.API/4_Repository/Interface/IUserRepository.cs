@@ -5,6 +5,6 @@ namespace RoutineTracker.API.Repository;
 public interface IUserRepository
 {
     User CreateUser(User newUser);
-    User? AuthenticateUser(User user);
+    User? GetUserByCredentials(User user);
     User? DeleteUserById(int id);
 }

@@ -18,7 +18,7 @@ public class UserRepository : IUserRepository
         return newUser;
     }
 
-    public User? AuthenticateUser(User user)
+    public User? GetUserByCredentials(User user)
     {
         return _routineTrackerContext.Users.Find(user.Username, user.Password);
     }

@@ -1,6 +1,7 @@
 using RoutineTracker.API.DTO;
 using RoutineTracker.API.Model;
 using RoutineTracker.API.Repository;
+using RoutineTracker.API.Utilities;
 
 namespace RoutineTracker.API.Service;
 
@@ -16,13 +17,15 @@ public class UserService : IUserService
     public User CreateUser(UserInDTO newUser)
     {
         var user = newUser.ToUser();
+        user.Password = Crypto.HashPassword(user.Password);
         return _userRepository.CreateUser(user);
     }
 
     public User? AuthenticateUser(UserInDTO user)
     {
         var userToAuthenticate = user.ToUser();
-        return _userRepository.AuthenticateUser(userToAuthenticate);
+        userToAuthenticate.Password = Crypto.HashPassword(userToAuthenticate.Password);
+        return _userRepository.GetUserByCredentials(userToAuthenticate);
     }
 
     public User? DeleteUserById(int id)

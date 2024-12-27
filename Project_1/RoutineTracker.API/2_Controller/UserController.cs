@@ -28,7 +28,7 @@ public class UserController : ControllerBase
         var authenticatedUser = _userService.AuthenticateUser(user);
         if (authenticatedUser == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(authenticatedUser);
     }
@@ -39,7 +39,7 @@ public class UserController : ControllerBase
         var user = _userService.DeleteUserById(id);
         if (user == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(user);
     }

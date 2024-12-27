@@ -28,7 +28,7 @@ public class ItemController : ControllerBase
         var item = _itemService.GetItemById(id);
         if (item == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(item);
     }
@@ -39,7 +39,7 @@ public class ItemController : ControllerBase
         var item = _itemService.UpdateItemById(id, updatedItem);
         if (item == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(item);
     }
@@ -50,7 +50,7 @@ public class ItemController : ControllerBase
         var item = _itemService.DeleteItemById(id);
         if (item == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(item);
     }
@@ -75,7 +75,7 @@ public class ItemController : ControllerBase
         var item = _itemService.AddItemToCategory(itemId, categoryId);
         if (item == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(item);
     }
@@ -86,7 +86,7 @@ public class ItemController : ControllerBase
         var item = _itemService.RemoveItemFromCategory(itemId, categoryId);
         if (item == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(item);
     }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using RoutineTracker.API.Data;
 using RoutineTracker.API.Repository;
@@ -33,6 +34,13 @@ builder.Services.AddControllers()
 
 
 var app = builder.Build();
+
+// Redirect base url to swagger
+app.MapGet("", context =>
+{
+    context.Response.Redirect("/swagger");
+    return Task.CompletedTask;
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

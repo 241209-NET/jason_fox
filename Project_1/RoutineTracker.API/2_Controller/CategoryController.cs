@@ -28,7 +28,7 @@ public class CategoryController : ControllerBase
         var category = _categoryService.GetCategoryById(id);
         if (category == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(category);
     }
@@ -39,7 +39,7 @@ public class CategoryController : ControllerBase
         var category = _categoryService.UpdateCategoryById(id, updatedCategory);
         if (category == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(category);
     }

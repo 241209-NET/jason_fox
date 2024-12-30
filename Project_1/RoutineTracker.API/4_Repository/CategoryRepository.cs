@@ -34,6 +34,7 @@ public class CategoryRepository : ICategoryRepository
         var category = _routineTrackerContext.Categories.Find(id);
         if (category == null) return null;
         category.Name = updatedCategory.Name;
+        category.Description = updatedCategory.Description;
         _routineTrackerContext.SaveChanges();
         return category;
     }

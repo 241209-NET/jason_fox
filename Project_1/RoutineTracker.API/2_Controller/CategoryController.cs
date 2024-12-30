@@ -40,7 +40,6 @@ public class CategoryController : ControllerBase
         return Ok(category);
     }
 
-    // TODO: Fix category not updating
     [HttpPut("{id}")]
     public IActionResult UpdateCategoryById(int id, [FromBody] CategoryInDTO updatedCategory)
     {

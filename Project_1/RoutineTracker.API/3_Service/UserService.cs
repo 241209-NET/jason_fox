@@ -20,7 +20,7 @@ public class UserService : IUserService
         user.Password = Crypto.HashPassword(user.Password);
         return _userRepository.CreateUser(user);
     }
-    
+
     public IEnumerable<User> GetAllUsers()
     {
         return _userRepository.GetAllUsers();
@@ -34,8 +34,10 @@ public class UserService : IUserService
     public User? AuthenticateUser(UserInDTO user)
     {
         var userToAuthenticate = user.ToUser();
-        userToAuthenticate.Password = Crypto.HashPassword(userToAuthenticate.Password);
-        return _userRepository.GetUserByCredentials(userToAuthenticate);
+        var existingUser = _userRepository.GetUserByUsername(userToAuthenticate.Username);
+        if (existingUser == null) return null;
+        if (!Crypto.ComparePasswords(userToAuthenticate.Password, existingUser.Password)) return null;
+        return existingUser;
     }
 
     public User? DeleteUserById(int id)

@@ -28,9 +28,9 @@ public class UserRepository : IUserRepository
         return _routineTrackerContext.Users.Find(id);
     }
 
-    public User? GetUserByCredentials(User user)
+    public User? GetUserByUsername(string username)
     {
-        return _routineTrackerContext.Users.Select(u => u).Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
+        return _routineTrackerContext.Users.Select(u => u).Where(u => u.Username == username).FirstOrDefault();
     }
 
     public User? DeleteUserById(int id)

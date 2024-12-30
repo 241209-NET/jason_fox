@@ -9,13 +9,25 @@ public class UtilitiesTests
     {
         // Arrange
         var password = "password";
-        var salt = Utilities.CreateSalt();
-        var hashedPassword = Utilities.HashPassword(password, salt);
 
         // Act
-        var result = Utilities.HashPassword(password, salt);
+        var result = Crypto.HashPassword(password);
 
         // Assert
-        Assert.Equal(hashedPassword, result);
+        Assert.NotEqual(password, result);
+    }
+
+    [Fact]
+    public void TestComparePasswords()
+    {
+        // Arrange
+        var password = "password";
+        var hashedPassword = Crypto.HashPassword(password);
+
+        // Act
+        var result = Crypto.ComparePasswords(password, hashedPassword);
+
+        // Assert
+        Assert.True(result);
     }
 }

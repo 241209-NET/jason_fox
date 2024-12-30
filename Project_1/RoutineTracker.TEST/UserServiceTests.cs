@@ -1,10 +1,76 @@
+using RoutineTracker.API.Model;
+using RoutineTracker.API.DTO;
+using RoutineTracker.API.Repository;
+using RoutineTracker.API.Service;
+using Moq;
+
 namespace RoutineTracker.TEST;
+
+public class UserDbFixture : IDisposable
+{
+    public Mock<IUserRepository> MockRepo { get; private set; }
+    public UserService UserService { get; private set; }
+
+    public UserDbFixture()
+    {
+        var user = new User
+        {
+            Id = 1,
+            Username = "test",
+            Password = "password"
+        };
+
+        MockRepo = new Mock<IUserRepository>();
+        MockRepo.Setup(repo => repo.GetUserByUsername(user.Username)).Returns(user);
+
+        UserService = new UserService(MockRepo.Object);
+    }
+
+    public void Dispose()
+    {
+    }
+}
 
 public class UserServiceTests
 {
-    [Fact]
-    public void Test1()
-    {
+    public UserDbFixture Fixture { get; private set; }
 
+    public UserServiceTests(UserDbFixture fixture)
+    {
+        Fixture = fixture;
+    }
+
+    [Fact]
+    public void TestAuthenticateUserValidPassword()
+    {
+        // Arrange
+        var loginUser = new UserInDTO
+        {
+            Username = "test",
+            Password = "password"
+        };
+
+        // Act
+        var result = Fixture.UserService.AuthenticateUser(loginUser);
+
+        // Assert
+        Assert.NotNull(result);
+    }
+
+    [Fact]
+    public void TestAuthenticateUserInvalidPassword()
+    {
+        // Arrange
+        var loginUser = new UserInDTO
+        {
+            Username = "test",
+            Password = "invalid"
+        };
+
+        // Act
+        var result = Fixture.UserService.AuthenticateUser(loginUser);
+
+        // Assert
+        Assert.Null(result);
     }
 }

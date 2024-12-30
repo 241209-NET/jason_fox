@@ -6,6 +6,6 @@ public class User
     public required string Username { get; set; }
     public required string Password { get; set; }
     
-    public IEnumerable<Category> Categories { get; set; }
-    public IEnumerable<Item> Items { get; set; }
+    public IEnumerable<Category>? Categories { get; set; }
+    public IEnumerable<Item>? Items { get; set; }
 }

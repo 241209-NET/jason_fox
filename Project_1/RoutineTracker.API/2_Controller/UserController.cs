@@ -14,21 +14,47 @@ public class UserController : ControllerBase
     {
         _userService = userService;
     }
-    
+
     [HttpPost]
     public IActionResult CreateUser(UserInDTO newUser)
     {
-        var user = _userService.CreateUser(newUser);
+        try
+        {
+            var user = _userService.CreateUser(newUser);
+            return Ok(user);
+        }
+        catch (Exception e) { 
+            Console.Error.WriteLine(e.GetType().Name);
+            return Conflict("Username already exists");
+        }
+    }
+
+    [HttpGet]
+    public IActionResult GetAllUsers()
+    {
+        var users = _userService.GetAllUsers();
+        return Ok(users);
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetUserById(int id)
+    {
+        var user = _userService.GetUserById(id);
+        if (user == null)
+        {
+            return BadRequest("User not found");
+        }
         return Ok(user);
     }
 
+    // TODO: Fix this route
     [HttpPost("authenticate")]
     public IActionResult AuthenticateUser(UserInDTO user)
     {
         var authenticatedUser = _userService.AuthenticateUser(user);
         if (authenticatedUser == null)
         {
-            return Unauthorized();
+            return Unauthorized("Invalid login credentials");
         }
         return Ok(authenticatedUser);
     }
@@ -39,7 +65,7 @@ public class UserController : ControllerBase
         var user = _userService.DeleteUserById(id);
         if (user == null)
         {
-            return BadRequest();
+            return BadRequest("User not found");
         }
         return Ok(user);
     }
@@ -49,5 +75,5 @@ public class UserController : ControllerBase
     {
         var users = _userService.DeleteAllUsers();
         return Ok(users);
-    }    
+    }
 }

@@ -20,6 +20,16 @@ public class UserService : IUserService
         user.Password = Crypto.HashPassword(user.Password);
         return _userRepository.CreateUser(user);
     }
+    
+    public IEnumerable<User> GetAllUsers()
+    {
+        return _userRepository.GetAllUsers();
+    }
+
+    public User? GetUserById(int id)
+    {
+        return _userRepository.GetUserById(id);
+    }
 
     public User? AuthenticateUser(UserInDTO user)
     {

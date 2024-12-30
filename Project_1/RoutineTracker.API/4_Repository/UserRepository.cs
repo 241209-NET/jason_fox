@@ -18,6 +18,16 @@ public class UserRepository : IUserRepository
         return newUser;
     }
 
+    public IEnumerable<User> GetAllUsers()
+    {
+        return _routineTrackerContext.Users.Select(u => u);
+    }
+
+    public User? GetUserById(int id)
+    {
+        return _routineTrackerContext.Users.Find(id);
+    }
+
     public User? GetUserByCredentials(User user)
     {
         return _routineTrackerContext.Users.Select(u => u).Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();

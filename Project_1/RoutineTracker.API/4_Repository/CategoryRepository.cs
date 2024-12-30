@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using RoutineTracker.API.Data;
 using RoutineTracker.API.Model;
 
@@ -10,7 +11,7 @@ public class CategoryRepository : ICategoryRepository
     {
         _routineTrackerContext = routineTrackerContext;
     }
-    
+
     public Category CreateCategory(Category newCategory)
     {
         _routineTrackerContext.Categories.Add(newCategory);
@@ -20,12 +21,12 @@ public class CategoryRepository : ICategoryRepository
 
     public IEnumerable<Category> GetAllCategoriesByUserId(int userId)
     {
-        return _routineTrackerContext.Categories.Where(c => c.UserId == userId);
+        return _routineTrackerContext.Categories.Where(c => c.UserId == userId).Include(c => c.Items);
     }
 
     public Category? GetCategoryById(int id)
     {
-        return _routineTrackerContext.Categories.Find(id);
+        return _routineTrackerContext.Categories.Where(c => c.Id == id).Include(c => c.Items).FirstOrDefault();
     }
 
     public Category? UpdateCategoryById(int id, Category updatedCategory)
@@ -39,7 +40,7 @@ public class CategoryRepository : ICategoryRepository
 
     public Category? DeleteCategoryById(int id)
     {
-        var category = _routineTrackerContext.Categories.Find(id);
+        var category = GetCategoryById(id);
         if (category == null) return null;
         _routineTrackerContext.Categories.Remove(category);
         _routineTrackerContext.SaveChanges();

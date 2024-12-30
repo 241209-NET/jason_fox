@@ -19,7 +19,14 @@ public class CategoryController : ControllerBase
     public IActionResult CreateCategory([FromBody] CategoryInDTO newCategory)
     {
         var category = _categoryService.CreateCategory(newCategory);
-        return CreatedAtAction("Category Created", category);
+        return Ok(category);
+    }
+
+    [HttpGet("user/{userId}")]
+    public IActionResult GetAllCategoriesByUserId(int userId)
+    {
+        var categories = _categoryService.GetAllCategoriesByUserId(userId);
+        return Ok(categories);
     }
 
     [HttpGet("{id}")]
@@ -28,18 +35,19 @@ public class CategoryController : ControllerBase
         var category = _categoryService.GetCategoryById(id);
         if (category == null)
         {
-            return BadRequest();
+            return BadRequest("Category not found");
         }
         return Ok(category);
     }
 
+    // TODO: Fix category not updating
     [HttpPut("{id}")]
     public IActionResult UpdateCategoryById(int id, [FromBody] CategoryInDTO updatedCategory)
     {
         var category = _categoryService.UpdateCategoryById(id, updatedCategory);
         if (category == null)
         {
-            return BadRequest();
+            return BadRequest("Category not found");
         }
         return Ok(category);
     }

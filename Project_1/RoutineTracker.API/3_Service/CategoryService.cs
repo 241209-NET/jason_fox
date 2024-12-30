@@ -19,6 +19,11 @@ public class CategoryService : ICategoryService
         return _categoryRepository.CreateCategory(category);
     }
 
+    public IEnumerable<Category> GetAllCategoriesByUserId(int userId)
+    {
+        return _categoryRepository.GetAllCategoriesByUserId(userId);
+    }
+
     public Category? GetCategoryById(int id)
     {
         return _categoryRepository.GetCategoryById(id);

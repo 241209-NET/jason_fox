@@ -19,7 +19,7 @@ public class ItemController : ControllerBase
     public IActionResult CreateItem([FromBody] ItemInDTO newItem)
     {
         var item = _itemService.CreateItem(newItem);
-        return CreatedAtAction("Item Created", item);
+        return Ok(item);
     }
 
     [HttpGet("{id}")]

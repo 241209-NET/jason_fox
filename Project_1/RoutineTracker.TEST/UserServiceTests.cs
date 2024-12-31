@@ -31,13 +31,13 @@ public class UserDbFixture : IDisposable
     }
 }
 
-public class UserServiceTests
+public class UserServiceTests : IClassFixture<UserDbFixture>
 {
-    public UserDbFixture Fixture { get; private set; }
+    public UserDbFixture fixture;
 
     public UserServiceTests(UserDbFixture fixture)
     {
-        Fixture = fixture;
+        this.fixture = fixture;
     }
 
     [Fact]
@@ -51,7 +51,7 @@ public class UserServiceTests
         };
 
         // Act
-        var result = Fixture.UserService.AuthenticateUser(loginUser);
+        var result = fixture.UserService.AuthenticateUser(loginUser);
 
         // Assert
         Assert.NotNull(result);
@@ -68,7 +68,7 @@ public class UserServiceTests
         };
 
         // Act
-        var result = Fixture.UserService.AuthenticateUser(loginUser);
+        var result = fixture.UserService.AuthenticateUser(loginUser);
 
         // Assert
         Assert.Null(result);

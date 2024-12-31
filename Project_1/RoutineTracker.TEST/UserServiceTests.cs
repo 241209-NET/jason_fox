@@ -10,10 +10,12 @@ public class UserDbFixture : IDisposable
 {
     public Mock<IUserRepository> MockRepo { get; private set; }
     public UserService UserService { get; private set; }
+    public List<User> Users { get; private set; } = new List<User>();
+    public User TestUser { get; private set; }
 
     public UserDbFixture()
     {
-        var user = new User
+        TestUser = new User
         {
             Id = 1,
             Username = "test",
@@ -21,8 +23,28 @@ public class UserDbFixture : IDisposable
             Password = "10000$2uR1L/e5wiGKQO5n8E4xCf4G0MoU0YR3fc9+iEYesfr9kfNo"
         };
 
+        Users.Add(TestUser);
+
         MockRepo = new Mock<IUserRepository>();
-        MockRepo.Setup(repo => repo.GetUserByUsername(user.Username)).Returns(user);
+
+        // Create user
+        MockRepo.Setup(repo => repo.CreateUser(It.IsAny<User>())).Callback((User u) => Users.Add(u)).Returns(TestUser);
+
+        // Get all users
+        MockRepo.Setup(repo => repo.GetAllUsers()).Returns(Users);
+
+        // Get user by id
+        MockRepo.Setup(repo => repo.GetUserById(TestUser.Id)).Returns(TestUser);
+
+        // Get user by username
+        MockRepo.Setup(repo => repo.GetUserByUsername(TestUser.Username)).Returns(TestUser);
+
+        // Delete user
+        MockRepo.Setup(repo => repo.DeleteUserById(TestUser.Id)).Returns(TestUser);
+
+        // Delete all users
+        MockRepo.Setup(repo => repo.DeleteAllUsers()).Returns(Users);
+
 
         UserService = new UserService(MockRepo.Object);
     }
@@ -42,6 +64,47 @@ public class UserServiceTests : IClassFixture<UserDbFixture>
     }
 
     [Fact]
+    public void TestCreateUser()
+    {
+        // Arrange
+        var newUser = new UserInDTO
+        {
+            Username = "test",
+            Password = "password"
+        };
+
+        // Act
+        var result = fixture.UserService.CreateUser(newUser);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(newUser.Username, result.Username);
+        Assert.NotEqual(newUser.Password, result.Password);
+    }
+
+    [Fact]
+    public void TestGetAllUsers()
+    {
+        // Act
+        var result = fixture.UserService.GetAllUsers();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(fixture.Users.Count, result.Count());
+    }
+
+    [Fact]
+    public void TestGetUserById()
+    {
+        // Act
+        var result = fixture.UserService.GetUserById(fixture.TestUser.Id);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(fixture.TestUser.Id, result.Id);
+    }
+
+    [Fact] // TODO: Test is failing
     public void TestAuthenticateUserValidPassword()
     {
         // Arrange
@@ -73,5 +136,27 @@ public class UserServiceTests : IClassFixture<UserDbFixture>
 
         // Assert
         Assert.Null(result);
+    }
+
+    [Fact]
+    public void TestDeleteUserById()
+    {
+        // Act
+        var result = fixture.UserService.DeleteUserById(fixture.TestUser.Id);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(fixture.TestUser.Id, result.Id);
+    }
+
+    [Fact]
+    public void TestDeleteAllUsers()
+    {
+        // Act
+        var result = fixture.UserService.DeleteAllUsers();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.NotEmpty(result);
     }
 }

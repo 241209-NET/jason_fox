@@ -3,6 +3,7 @@ using RoutineTracker.API.DTO;
 using RoutineTracker.API.Repository;
 using RoutineTracker.API.Service;
 using Moq;
+using RoutineTracker.API.Utilities;
 
 namespace RoutineTracker.TEST;
 
@@ -10,7 +11,7 @@ public class UserDbFixture : IDisposable
 {
     public Mock<IUserRepository> MockRepo { get; private set; }
     public UserService UserService { get; private set; }
-    public List<User> Users { get; private set; } = new List<User>();
+    public List<User> UserList { get; private set; } = new List<User>();
     public User TestUser { get; private set; }
 
     public UserDbFixture()
@@ -20,18 +21,18 @@ public class UserDbFixture : IDisposable
             Id = 1,
             Username = "test",
             // Password is hashed "password"
-            Password = "10000$2uR1L/e5wiGKQO5n8E4xCf4G0MoU0YR3fc9+iEYesfr9kfNo"
+            Password = Crypto.HashPassword("password")
         };
 
-        Users.Add(TestUser);
+        UserList.Add(TestUser);
 
         MockRepo = new Mock<IUserRepository>();
 
         // Create user
-        MockRepo.Setup(repo => repo.CreateUser(It.IsAny<User>())).Callback((User u) => Users.Add(u)).Returns(TestUser);
+        MockRepo.Setup(repo => repo.CreateUser(It.IsAny<User>())).Callback((User u) => UserList.Add(u)).Returns(TestUser);
 
         // Get all users
-        MockRepo.Setup(repo => repo.GetAllUsers()).Returns(Users);
+        MockRepo.Setup(repo => repo.GetAllUsers()).Returns(UserList);
 
         // Get user by id
         MockRepo.Setup(repo => repo.GetUserById(TestUser.Id)).Returns(TestUser);
@@ -43,7 +44,7 @@ public class UserDbFixture : IDisposable
         MockRepo.Setup(repo => repo.DeleteUserById(TestUser.Id)).Returns(TestUser);
 
         // Delete all users
-        MockRepo.Setup(repo => repo.DeleteAllUsers()).Returns(Users);
+        MockRepo.Setup(repo => repo.DeleteAllUsers()).Returns(UserList);
 
 
         UserService = new UserService(MockRepo.Object);
@@ -90,7 +91,7 @@ public class UserServiceTests : IClassFixture<UserDbFixture>
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(fixture.Users.Count, result.Count());
+        Assert.Equal(fixture.UserList.Count, result.Count());
     }
 
     [Fact]
@@ -116,7 +117,6 @@ public class UserServiceTests : IClassFixture<UserDbFixture>
 
         // Act
         var result = fixture.UserService.AuthenticateUser(loginUser);
-
         // Assert
         Assert.NotNull(result);
     }

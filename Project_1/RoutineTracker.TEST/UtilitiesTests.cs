@@ -15,6 +15,7 @@ public class UtilitiesTests
 
         // Assert
         Assert.NotEqual(password, result);
+        Assert.Contains("$", result);
     }
 
     [Fact]

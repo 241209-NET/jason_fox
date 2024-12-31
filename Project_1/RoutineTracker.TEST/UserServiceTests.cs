@@ -17,7 +17,8 @@ public class UserDbFixture : IDisposable
         {
             Id = 1,
             Username = "test",
-            Password = "password"
+            // Password is hashed "password"
+            Password = "10000$2uR1L/e5wiGKQO5n8E4xCf4G0MoU0YR3fc9+iEYesfr9kfNo"
         };
 
         MockRepo = new Mock<IUserRepository>();

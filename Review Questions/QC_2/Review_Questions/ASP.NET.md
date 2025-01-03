@@ -1,19 +1,49 @@
 # ASP.NET Core
 - What is ASP.NET Core?
+	- Open-source, cross-platform web development framework built on .NET platform
+	- Allows developers to create modern, cloud-ready web apps and services that can run on any OS
 - What is Controller in asp.net core?
+	- Controllers handle the HTTP requests sent from clients
+	- Controllers send the HTTP responses back to clients
 - How does controller based routing work?
-- how do you create end points in asp.net core?
-- What is appsettings.json? Why do we have appsettings.json and appsettings.Development.json?
+	- ASP.NET uses routing middleware to match URLs of incoming requests and map them to actions
+- How do you create end points in asp.net core?
+	- Use route decorators like HttpGet, HttpPut, etc
+	- Specify URL path and http method for the route
+- What is appsettings.json? Why do we have appsettings.json and appsettings.Development.json?\
+	- Appsettings.json is a config file used to environment variables in a json format
+	- Appsettings.development.json is specifically for the development environment
 - What is Open API?
+	- Industry standard that defines how to document and interact with Restful APIs
+	- Provides a formal way to describe an APIs capabilities and structure
 - How do you achieve dependency injection in asp.net core?
+	- Leverage built-in dependency injection container by registering services within the Startup class
+		- Using IServiceCollection interface
 - What are middlewares? Where do you configure them?
+	- Middleware refers to the software components that sit within the app's rquest pipeline
+	- Middleware can intercept and modify incoming HTTP requests before they reach the controller
+	- Configured within the Startup class's Configure method
 - What are filters?
+	- Classes that allow code to run before or after specific stages of the request processing pipeline
+	- Useful for caching responses, handling authorization, etc
 - What is Model binding?
+	- Process of automatically converting data from an incoming HTTP request into a .NET object
 - How do you utilize Data Annotations to enhance Model Binding?
+	- Can be used to automatically validate incoming data from the request against the annotations
+	- Increases integrity
 - How do you configure a route to...
 	- accept a route parameter
+		- Put `{}` in the route template to define a placeholder
 	- accept query parameters
+		- Add the parameter name followed by a `?` in the route template
+		- Add `[FromQuery]` annotation in method parameter
 	- accept json as request body
+		- Add `[FromBody]` annotation in method parameter
 - How do you set up memcache in ASP.NET Core?
+	- Install the package and add it to the `builder.Services`
 - What is CORS, and how do you configure it?
+	- Cross Origin Resource Sharing blocks browser requests from a different origin unless enabled
+	- Call `AddCors` method in the `IServiceCollection` and use the `UseCors` method in the middleware pipeline
 - What is Authentication and Authorization, and how are they different?
+	- Authentication is the process of verifying someone is who they claim to be
+	- Authorization determines what specific actions or resources a verified user is allowed to access

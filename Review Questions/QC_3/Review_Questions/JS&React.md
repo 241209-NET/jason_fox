@@ -1,0 +1,209 @@
+## Javascript
+- What is JS?
+    - JavaScript is an interpreted language used to add interactivity to webpages
+- Is JS strongly or loosely typed?
+    - Loosely typed
+- What are the datatypes of JS?
+    - boolean
+    - string
+    - number
+    - null
+    - undefined
+    - symbol
+    - bigint
+- What are the different ways to declare variables in JS?
+    - var, let, const
+- What is the difference between var and let?
+    - var has global scope, let does not
+- How is a JS script attached to an HTML file?
+    - script tag
+- What are the scopes featured in JS?
+    - global, function, block
+- What is type coersion?
+    - Happens in ==
+    - Operands are converted to the same type
+    - Implicit type casting, like "1" + 1
+- What are truthy and falsy values?
+    - Values equivalent to a boolean, such as undefined and null === boolean
+- What is the difference between == and ===?
+    - == returns true if values are equal after type coersion
+    - === is strict equality, requires both value and type of operands to be the same
+- What are some of the different ways to interact with Arrays in JS?
+    - map, forEach, slice, splice
+- What is the DOM?
+- How do you select something from the DOM in Javascript?
+    - document.querySelector()
+- What is bubbling and capturing?
+- What is the event loop in JS?
+    - Enables async operations to be executed in a non-blocking manner
+    - JS is single threaded, uses a call stack to keep track of function calls being executed
+    - Event loop continuously checks if the call stack is empty
+    - Executes from callback queue when call stack is empty
+- What do async and await do in JS?
+    - async keyword creates an asynchronous function that can return a promise
+    - await keyword is used when calling an async function to wait for the promise to resolve
+- What is a callback function?
+    - Function that is passed as an argument to another function
+    - Allows first function to execute the second function at a later time
+- What is an event listener and why do we use it?
+    - Function that waits for an event to occur before executing
+    - Used to add interactivity to webpages
+- What is hoisting?
+    - Variable and function declarations are moved to the top of their scope before code execution
+    - Can use a variable or function before it's declared in the code
+- What does ‘strict mode’ do?
+    - Enforces stricter rules and error handling to improve code safety 
+- What features were introduced in ES6?
+    - Arrow functions
+    - Classes
+    - Enhanced object literals
+    - Template strings
+    - Destructuring
+    - let & const
+    - iterators
+    - spread and rest operators
+- What are arrow functions?
+    - Concise way to write function expressions
+    - Don't have access to `this` keyword
+- What are template literals?
+    - Similar to template strings in C#
+    - Allows using variables inside string declaration
+- What are spread & rest operators?
+    - Spread operator expands an array or object into its individual elements
+    - Rest operator gathers multiple elements into a single array
+- What is a promise?
+    - Object representing the eventual completion/failure of an async operation
+    - Like a placeholder
+- What are closures?
+    - Combination of a function bundled together with references to its surrounding state
+    - Gives access to an outer function's scope from an inner function even after the outer function has finished executing
+
+## Typescript
+- What is TS?
+    - TypeScript is a superset of JavaScript that adds type safety
+- Is TS strongly or weakly typed?
+    - Strongly typed
+- Why should TS be used?
+    - Makes code more readable and maintainable
+- What datatypes are introduced in TS which are not in JS?
+    - Enums
+    - Tuples
+    - Any
+    - Unknown
+    - Void
+    - Never
+    - Literal types
+- What are union types?
+    - Allows a variable to hold values of different types
+- What are type guards?
+    - Expressions that perform runtime checks to ensure variable is of specific type
+    - e.g. typeof, instanceof
+- What features does TS introduce apart from strong typing & new datatypes?
+    - Interfaces, generics, enums, access modifiers, decorators, namespaces, type inference
+- What are decorators?
+    - ALlows modifying or extending the behavior of classes, methods, properties, or parameters
+    - Functions that are applied to declarations
+    - Provides a way to add metadata or modify functionality
+- How about interfaces?
+    - Blueprint for the structure or shape of an object
+- How do you declare variables with types?
+    - Using : 
+- What are two different ways to cast in TS?
+    - as keyword    `myVar as string`
+    - angle brackets    `<string>myVar`
+- How do you type generics in TS?
+    - Angle brackets
+
+## Node
+- What is node? Why is it used?
+    - Runtime environment for JavaScript
+    - Allows developers to write server-side applications in JS
+- What is npm?
+    - Open source registry and package manager for JS
+- What is npx?
+    - Node Package eXecute
+    - Node package runner
+- What is package.json?
+    - JSON file with metadata about a Node.js project
+- What is node_modules?
+    - Installed npm packages
+
+## React Basics
+- What is a component?
+    - Self-contained, reusable code that represents part of a user interfaces
+    - Building blocks of a React app
+- What is the structure of a functional component?
+- What is special about the App.tsx file?
+- What is the virtual DOM?
+    - Lightweight, abstract copy of a webpage DOM
+    - Used to optimize rendering and performance
+
+## React SPA
+- What is a SPA? What are the advantages and disadvantages?
+    - Faster and smoother user experience
+    - Longer initial load times & SEO issues
+- What is routing?
+    - BrowserRouter
+- How is a new route set up?
+    - Route component
+- React state management
+- What are props?
+    - Way to pass data from parent to child components
+    - Similar to function inputs
+- What is state?
+    - Allows components to manage and store data that can change over time
+    - When state changes, components are re-rendered
+- Are props mutable? Is state mutable?
+    - No
+- What is context? Why is it used?
+    - Provides a way to pass data through the component tree without having to pass props down at every level
+- How is data sent from a parent component to a child component?
+    - Passed as props
+- How is data sent from a child component to a parent component (name of the technique & how it’s done)
+    - Lifting state up
+    - Passing a callback function to a child component such as a setState action
+
+## React rendering
+- What is JSX?
+    - JavaScript XML
+    - Syntax externsion for JS that allows you to write HTML within JS
+- What does it mean when there are curly braces { } in the return statement of a component?
+    - The component is returning/evaluating a JavaScript object
+- How can you display a variable on your site in React (one-way binding)?
+    - Data flows in one direction, from the component's state or props to the rendered output
+- What is conditional rendering?
+- How do I display an array of items as individual components in React?
+- What are lists & keys in react?
+    - Lists allow dynamic rendering of multiple components based on iterable
+    - Each list item needs a key unique within the list
+- When does a component re-render?
+    - Component re-renders when state or props change
+
+## Data & Event binding
+- How is data binding done in React (one way binding)?
+    - Data flows from parent to child components through props
+    - Props are read-only
+- How is event binding done in React?
+    - Create handler function
+    - Pass handler function to event attribute in component
+- How can you retrieve input box data in React?
+    - value attribute
+
+## React hooks
+- What are hooks?
+    - Functions that hook into React state and lifecycle from within functional components
+- What does useEffect do?
+    - Perform side effects in functional components
+    - e.g. fetching data from an API, setting up event listeners, using timers
+- What does setState do?
+    - Updates state
+- what is axios?
+    - Promise-based JS library used to make HTTP requests from browser/NodeJS
+- what is shallow rendering?
+    - Method to test a component as a unit without affecting child or linked components
+    - Avoids rendering entire component tree
+- what is jest? 
+    - JavaScript testing framework
+    - Popular for testing React applications
+- what is mocking (conceptual)? 
+    - Replace external dependencies with controlled and predictable substitutes

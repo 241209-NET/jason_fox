@@ -1,0 +1,89 @@
+# HTML_CSS
+## HTML
+- What is HTML, and what do we use html for?
+	- Hypertext Markup Language
+	- Used to create and structure webpages and tells browsers how to display content
+- What are html tags? Give me examples of common tags
+	- Tags are semantic HTML components used to represent various parts of HTML structure from metadata to content
+- how are tags different from elements?
+	- Element is made up of HTML tags and the content they enclose
+	- Tag is a component that defines the structure and meaning of an element
+- what are attributes?
+	- Properties of an element
+	- Usually defined in name value pairs
+	- Provide additional information about elements
+- What are global attributes?
+	- Attributes that are common to all HTML elements
+	- May have no effect on some elements but can be used on all of them
+	- Examples include class, id, style, aria role, event handlers
+- What is the difference between id attribute and class attribute?
+	- IDs are meant to be unique, classes are meant to be reused
+- What is the difference between head , header, and heading?
+	- Head is for metadata section
+	- Header is for header content at the top of a page
+	- Heading is for text to be displayed in variously prominent sizes
+- What is semantic tags? Why would we want to use them?
+	- Semantic tags help improve Search Engine Optimization
+	- Things like figure vs img, div vs section/header/etc
+- How do we use forms to accept user input?
+- What are inline & block elements?
+	- Block elements always start on a new line
+	- Inline only takes as much width as necessary
+- What are the two main parts of an HTML document? What are their roles?
+	- Head contains the metadata for the document
+	- Body contains the content for the document
+- How are images created in HTML?
+	- img tag with src attribute
+- How are links created in HTML?
+	- anchor tag with href attribute
+- How are lists created in HTML?
+	- li tags wrapped in a ul or ol tag
+- How are forms created in HTML?
+	- input tags wrapped in a form tag
+- What features were introduced in HTML5?
+	- Semantic elements
+	- Canvas
+	- LocalStorage
+	- Figure
+	- Audio
+
+## CSS
+- What is CSS? What's the purpose of CSS in a webpage?
+	- Cascading Style Sheets
+- what are selectors?
+	- A way to apply styles to elements based on certain criteria
+- What are rules?
+	- Set of properties and values that are applied to HTML elements to style them
+- Describe following types of selectors and their syntax:
+	- Tag selector
+		- name of tag
+	- Class selector
+		- . + name of class
+	- Id selector
+		- \# + name of class
+	- Pseudo class selectors
+		- : + name of pseudo-class
+		- used to style states of an element e.g. hover, focus
+	- Combination selectors
+		- Descendant combinator = space
+		- Child combinator = >
+		- Next sibling combinator = +
+		- Subsequent sibling combinator = ~
+- Describe box model
+	- Margin > borders > padding > content
+- What is responsive web design
+	- Ensures a website's usability and appearance are optimized across a range of screen sizes and devices
+- Play this game: https://flexboxfroggy.com/
+- Play this game: https://cssgridgarden.com/
+- What do we mean by cascading in CSS?
+	- When multiple styles are applied to the same element, the browser will prioritize certain styles based on a set of rules
+	- Later styles take precedence
+- What is specificity in CSS?
+	- System that determines which style rule should be applied to an element when multiple styles target the same element
+- What are the 3 ways to introduce CSS styling to a site? Which is generally preferable?
+	- Internal style sheet using `<style>` element in head section
+	- Inline styles with `<style>` attribute 
+	- External stylesheet using a `<link>` tag in the head (preferred)
+- In what order do these 3 ways get prioritized? TODO:
+- How do CSS rules get selected when there are multiple conflicting rules?
+	- Whichever rule has the most specificity or was applied the latest if equal specificity

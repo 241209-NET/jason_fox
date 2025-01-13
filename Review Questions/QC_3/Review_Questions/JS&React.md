@@ -24,7 +24,7 @@
     - Operands are converted to the same type
     - Implicit type casting, like "1" + 1
 - What are truthy and falsy values?
-    - Values equivalent to a boolean, such as undefined and null === boolean
+    - Values equivalent to a boolean, such as undefined and null == false
 - What is the difference between == and ===?
     - == returns true if values are equal after type coersion
     - === is strict equality, requires both value and type of operands to be the same

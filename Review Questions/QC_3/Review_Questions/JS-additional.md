@@ -43,7 +43,7 @@
 ### Object Oriented Javascript
 - How do you create class defn in javascript? 
     - class keyword
-- How do you create constructor in class defn?\
+- How do you create constructor in class defn?
     - constructor keyword
 - How do you define class fields? (!the syntax is quite a bit different from C#!)
     - variable name (optionally assign a value)

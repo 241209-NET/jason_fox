@@ -166,7 +166,7 @@
 ## React rendering
 - What is JSX?
     - JavaScript XML
-    - Syntax externsion for JS that allows you to write HTML within JS
+    - Syntax extension for JS that allows you to write HTML within JS
 - What does it mean when there are curly braces { } in the return statement of a component?
     - The component is returning/evaluating a JavaScript object
 - How can you display a variable on your site in React (one-way binding)?
